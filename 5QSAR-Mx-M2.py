@@ -367,7 +367,7 @@ def process(file1,file2,file3,filer,cfile,i,j,dct):
     dfl.to_csv(os.path.join(dct,trname),index=False)
     
     lc=lco(file3,Xtr[a],ytr)
-    lcoq2,lcorpred,lcorm2,lcodrm2=lc.fit()
+    lcoq2,lcorpred,lcorm2,lcodrm2,tsc1,tsc=lc.fit()
     
     filer.write("Sub-training set results "+"\n")
     filer.write("System information "+"\n")
