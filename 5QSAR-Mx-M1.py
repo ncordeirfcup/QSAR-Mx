@@ -353,8 +353,6 @@ def trainsetfit2(X,y):
         c1=mean_absolute_error(y,l)
         lt.append(c1)
         val=abs(lt[len(lt)-1]-lt[len(lt)-2])
-        print(c1)
-        #print(val/lt[len(lt)-2]*100)
         val2=val/lt[len(lt)-2]*100   
         if val2<float(fifthLabelTabThreer9c2.get()):
            break
