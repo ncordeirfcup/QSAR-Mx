@@ -89,7 +89,6 @@ def corr(df):
         x = sorted(x)[0:-1]
         lt.append(x)
     flat_list = [item for sublist in lt for item in sublist]
-    print(flat_list)
     return max(flat_list),min(flat_list)
 
 def shuffling(df, n=1, axis=0):     
@@ -359,8 +358,6 @@ def trainsetfit2(X,y):
     #print(c)
     tb=X[a].corr()
     mx,mn=corr(tb)
-    print(mx)
-    print(mn)
     tbn=str(c_)+'_corr.csv'
     tb.to_csv(tbn)
     #pt.to_csv('pt_train_'+str(cthreshold)+'_'+str(vthreshold)+'.csv')
