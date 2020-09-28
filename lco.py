@@ -29,15 +29,15 @@ class lco():
               ytspr=model.predict(Xts)
               tsdf=pd.concat([yts,pd.DataFrame(ytspr)],axis=1)
               l1.append(tsdf)
-              tsc=pd.concat(l1,axis=0)
-              tsc.columns=['Active','Predict']
-          tsc['Aver']=tsc['Active'].values.mean()
-          tsc['diff']=tsc['Active']-tsc['Predict']
-          tsc['diff2']=tsc['Active']-tsc['Aver']
-          q2_1=1-((tsc['diff']**2).sum()/(tsc['diff2']**2).sum())
-          r2pr_1=r2_score(tsc['Active'],tsc['Predict'])
-          rm2tr_1,drm2tr_1=rm2(tsc.iloc[:,0:1],tsc.iloc[:,1:2]).fit()
-          q2_1,r2pr_1,rm2tr_1,drm2tr_1
+              tsc1=pd.concat(l1,axis=0)
+              tsc1.columns=['Active','Predict']
+          tsc1['Aver']=tsc1['Active'].values.mean()
+          tsc1['diff']=tsc1['Active']-tsc1['Predict']
+          tsc1['diff2']=tsc1['Active']-tsc1['Aver']
+          q2_1=1-((tsc1['diff']**2).sum()/(tsc1['diff2']**2).sum())
+          r2pr_1=r2_score(tsc1['Active'],tsc1['Predict'])
+          rm2tr_1,drm2tr_1=rm2(tsc1.iloc[:,0:1],tsc1.iloc[:,1:2]).fit()
+          #q2_1,r2pr_1,rm2tr_1,drm2tr_1
           ###########secondcolumn#############
           gr_2=self.df.groupby([c2.columns[0]]).count().sort_values(self.df.iloc[:,0:1].columns[0], ascending=False).reset_index()
           for i in range((len(gr_2[c2.columns[0]].unique()))):
@@ -55,16 +55,17 @@ class lco():
               l2.append(tsdf)
               tsc=pd.concat(l2,axis=0)
               tsc.columns=['Active','Predict']
+         
           tsc['Aver']=tsc['Active'].values.mean()
           tsc['diff']=tsc['Active']-tsc['Predict']
           tsc['diff2']=tsc['Active']-tsc['Aver']
           q2_2=1-((tsc['diff']**2).sum()/(tsc['diff2']**2).sum())
           r2pr_2=r2_score(tsc['Active'],tsc['Predict'])
           rm2tr_2,drm2tr_2=rm2(tsc.iloc[:,0:1],tsc.iloc[:,1:2]).fit()
-          q2_2,r2pr_2,rm2tr_2,drm2tr_2
+          #q2_2,r2pr_2,rm2tr_2,drm2tr_2
           ############Final############
           q2=(q2_1+q2_2)/2
           r2pr=(r2pr_2+r2pr_1)/2
           rm2tr=(rm2tr_2+rm2tr_1)/2
           drm2tr=(drm2tr_2+drm2tr_1)/2
-          return q2,r2pr,rm2tr,drm2tr    
+          return q2,r2pr,rm2tr,drm2tr,tsc1,tsc  
