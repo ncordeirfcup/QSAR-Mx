@@ -241,7 +241,7 @@ def datasel(i,j,filex1,dct):
     trdp=trp.drop(inc3.columns,axis=1)
     tsdp=tsp.drop(inc3.columns,axis=1)
     trdp2=trp.drop(inc4.columns,axis=1)
-    trdp2.to_csv('TRDP2.csv', index=False)
+    #trdp2.to_csv('TRDP2.csv', index=False)
     trsp=trp[inc.iloc[:,0:5].columns]
     trsp['Set']='Train'
     tssp=tsp[inc.iloc[:,0:5].columns]
