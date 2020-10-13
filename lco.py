@@ -3,6 +3,7 @@ from sklearn.linear_model import LinearRegression
 from rm2 import rm2
 from sklearn.metrics import r2_score
 import numpy as np
+from sklearn.metrics import mean_absolute_error
 
 class lco():
       def __init__(self,df,X,y):
@@ -35,7 +36,7 @@ class lco():
           tsc1['diff']=tsc1['Active']-tsc1['Predict']
           tsc1['diff2']=tsc1['Active']-tsc1['Aver']
           q2_1=1-((tsc1['diff']**2).sum()/(tsc1['diff2']**2).sum())
-          r2pr_1=r2_score(tsc1['Active'],tsc1['Predict'])
+          r2pr_1=mean_absolute_error(tsc1['Active'],tsc1['Predict'])
           rm2tr_1,drm2tr_1=rm2(tsc1.iloc[:,0:1],tsc1.iloc[:,1:2]).fit()
           #q2_1,r2pr_1,rm2tr_1,drm2tr_1
           ###########secondcolumn#############
@@ -60,7 +61,7 @@ class lco():
           tsc['diff']=tsc['Active']-tsc['Predict']
           tsc['diff2']=tsc['Active']-tsc['Aver']
           q2_2=1-((tsc['diff']**2).sum()/(tsc['diff2']**2).sum())
-          r2pr_2=r2_score(tsc['Active'],tsc['Predict'])
+          r2pr_2=mean_absolute_error(tsc['Active'],tsc['Predict'])
           rm2tr_2,drm2tr_2=rm2(tsc.iloc[:,0:1],tsc.iloc[:,1:2]).fit()
           #q2_2,r2pr_2,rm2tr_2,drm2tr_2
           ############Final############
